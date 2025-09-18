@@ -81,8 +81,40 @@ $ forge build --zksync
 ```
 3. Reinstall vanilla foundry
 
+```docker
+$ docker ps
+
+before starting the docker sync we will get nothing as below
+
+CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
+
+```
 ### ZK-sync
 ```local_node
+run the docker locally. without docker node will not run
 $ foundryup-zksync
+$ npx zksync-cli dev config
+$ npx zksync-cli dev start
+
+The above command will install and run the anvil-zksync node locally
+```
+
+
+```message
+anvil-zksync started v0.6.10:
+ - ZKsync Node (L2):
+  - Chain ID: 260
+  - RPC URL: http://127.0.0.1:8011
+  - Rich accounts: https://docs.zksync.io/zksync-era/tooling/local-setup/anvil-zksync-node#pre-configured-rich-wallets
+ - Note: every restart will necessitate a reset of MetaMask's cached account data
+```
+
+```docker
+$ docker ps
+
+After Running the node, we can see the output of the running node
+
+CONTAINER ID   IMAGE                         COMMAND              CREATED          STATUS          PORTS                                         NAMES
+bb767591ee7f   zkcli-in-memory-node-zksync   "anvil-zksync run"   13 minutes ago   Up 13 minutes   0.0.0.0:8011->8011/tcp, [::]:8011->8011/tcp   zkcli-in-memory-node-zksync-1
 ```
 
